@@ -1,7 +1,6 @@
-// Base para hablar con el backend Express que ya tenían (backend/server.js,
-// puerto 3000, montado en /api/usuarios). El backend NO cambia, solo el
-// frontend que lo consume.
-const BASE_URL = "http://localhost:3000/api";
+// Base para hablar con el backend Express (backend/server.js).
+// En desarrollo usa localhost:3000/api y en producción permite configurar VITE_API_URL
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
 
 export async function apiFetch(path, options = {}) {
   const res = await fetch(`${BASE_URL}${path}`, {
