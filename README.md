@@ -35,7 +35,8 @@ Esta página fue desarrollada en grupo, como uno de los proyectos finales del Bo
 3. [Toma de Decisiones de Diseño y UX/UI](#-toma-de-decisiones-de-diseño-y-uxui)
 4. [Stack Tecnológico y Decisiones de Arquitectura](#-stack-tecnológico-y-decisiones-de-arquitectura)
 5. [Nuevas Ideas Implementadas (Calidad de Vida y Experiencia de Usuario)](#-nuevas-ideas-implementadas-calidad-de-vida-y-experiencia-de-usuario)
-6. [Estructura del Proyecto](#-estructura-del-proyecto)
+6. [Arquitectura de Despliegue en la Nube](#-arquitectura-de-despliegue-en-la-nube)
+7. [Estructura del Proyecto](#-estructura-del-proyecto)
 
 ---
 
@@ -119,7 +120,34 @@ Con la autorización de mis compañeras he realizado modificaciones para agregar
 * **Modal de Login Exitoso (Verde 🟢):** Brinda confirmación visual inmediata y amigable tras iniciar sesión con éxito antes de redirigir.
 * **Modal de Restricción en Home (Blanco y Rojo 🔴⚪):** Si un usuario no registrado intenta comprar, se despliega un diálogo limpio invitándolo a iniciar sesión o crear cuenta con botones de acceso directo, sin interrumpir abruptamente su navegación.
 * **Auto-Desplazamiento Post-Compra:** Al finalizar el pago, el usuario cuenta con el botón *"Ver mis tickets"*, que lo traslada al perfil ejecutando un desplazamiento suave (*smooth scroll*) directo a la sección de tickets adquiridos.
-* * **Auto-completado para el Admin:** El log in ahora cuenta con un autocompletado para el administrador, facilitando así el acceso al mismo en la página desplegada.
+* **Auto-completado para el Admin:** El login ahora cuenta con un botón de autocompletado para el administrador con credenciales de prueba visibles, facilitando la exploración inmediata de la plataforma.
+
+---
+
+## ☁️ Arquitectura de Despliegue en la Nube
+
+Para garantizar escalabilidad, seguridad y alta disponibilidad, la aplicación se encuentra desplegada bajo una **arquitectura desacoplada (*Decoupled Architecture*) en tres capas independientes**:
+
+```text
+┌────────────────────────────────┐       HTTP / REST       ┌────────────────────────────────┐       Mongoose URI      ┌────────────────────────────────┐
+│   Frontend (React + Vite)      │ ──────────────────────> │    Backend (Node.js + Express) │ ──────────────────────> │     Base de Datos (MongoDB)    │
+│   Alojado en Vercel (CDN)      │ <────────────────────── │    Alojado en Render (Web Srv) │ <────────────────────── │     Alojado en MongoDB Atlas   │
+└────────────────────────────────┘                         └────────────────────────────────┘                         └────────────────────────────────┘
+```
+
+### 1. Desglose Técnico de las Capas
+
+* **Frontend (React 19 + Vite) alojado en Vercel:**
+  * **Rol técnico:** Interfaz de usuario interactiva y cliente SPA. Está compuesto por archivos estáticos (HTML, CSS y bundles de JavaScript) que se descargan y ejecutan directamente en el navegador del usuario.
+  * **Justificación de elección:** Vercel está optimizado para servir aplicaciones frontend a través de redes de distribución de contenido (**Edge CDN**) globales con ultra baja latencia y cuenta con soporte nativo para el proceso de compilación y empaquetado de proyectos creados con Vite.
+
+* **Backend (Node.js + Express) alojado en Render:**
+  * **Rol técnico:** Servidor de la aplicación y API REST (`/api/usuarios`). Es un proceso activo continuo que procesa la lógica de negocio, valida contraseñas, administra sesiones y roles, y expone los endpoints de la API.
+  * **Justificación de elección:** A diferencia de plataformas de hosting puramente estáticas, Render permite levantar un servicio web persistente (*Web Service*) que permanece a la escucha de peticiones HTTP en todo momento, manteniendo el ciclo de vida continuo del runtime de Node.js.
+
+* **Base de Datos NoSQL alojada en MongoDB Atlas:**
+  * **Rol técnico:** Almacenamiento persistente de datos en formato de documentos BSON/JSON.
+  * **Justificación de elección:** Durante el desarrollo local, los datos vivían en el disco de la computadora (`localhost:27017`). Un servidor desplegado en la nube pública (Render) no puede acceder a una máquina local privada. MongoDB Atlas provee un clúster en la nube accesible de forma segura mediante una cadena de conexión cifrada (`MONGODB_URI`).
 
 ---
 
