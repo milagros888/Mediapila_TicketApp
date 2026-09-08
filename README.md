@@ -85,11 +85,6 @@ Cada vista y elemento interactivo fue diseñado para transmitir la adrenalina y 
 * División clara en 4 sectores oficiales: **Palco (VIP)**, **Platea**, **Tribuna Norte** y **Tribuna Sur**.
 * Grilla de asientos interactiva con feedback visual por colores (disponible, seleccionada, ocupada/no disponible) y cálculo de precios en tiempo real según la zona elegida.
 
-### 3. Sistema de Modales y Navegación Guiada
-* **Modal de Login Exitoso (Verde 🟢):** Brinda confirmación visual inmediata y amigable tras iniciar sesión con éxito antes de redirigir.
-* **Modal de Restricción en Home (Blanco y Rojo 🔴⚪):** Si un usuario no registrado intenta comprar, se despliega un diálogo limpio invitándolo a iniciar sesión o crear cuenta con botones de acceso directo, sin interrumpir abruptamente su navegación.
-* **Auto-Desplazamiento Post-Compra:** Al finalizar el pago, el usuario cuenta con el botón *"Ver mis tickets"*, que lo traslada al perfil ejecutando un desplazamiento suave (*smooth scroll*) directo a la sección de tickets adquiridos.
-
 ---
 
 ## 💻 Stack Tecnológico y Decisiones de Arquitectura
@@ -115,12 +110,16 @@ Cada vista y elemento interactivo fue diseñado para transmitir la adrenalina y 
 
 Con la autorización de mis compañeras he realizado modificaciones para agregar funcionalidad y mejorar la experiencia de usuario, entre ellas destaco las siguientes:
 
-* 📊 **Métricas reales y barra de ocupación interactiva:** Reemplazo de valores estáticos por cálculo en vivo de asientos vendidos vs. capacidad del estadio (3.552 butacas) con barra de progreso visual en la tabla de gestión.
-* 🎯 **Filtro de fases en el gráfico de recaudación:** Selector dinámico en Chart.js para auditar ingresos por etapa del torneo (`Todos`, `16avos`, `8vos`, `4tos`, `Semis`, `Final`) evitando gráficos apiñados y facilitando el análisis gerencial.
-* 🎟️ **Navegación inteligente con scroll automático:** Botón *"Ver mis tickets"* en la pantalla de éxito que traslada al usuario directamente a la sección de tickets en su perfil.
-* 🔒 **Blindaje y disponibilidad automática:** Los partidos de fases finalizadas pasan automáticamente a estado `"no disponible"`, deshabilitando compras accidentales tanto en las tarjetas como en rutas directas del estadio.
-* 🌐 **Soporte internacional ampliado:** Inclusión de nuevas selecciones como Egipto con renderizado automático de banderas en el administrador y el calendario.
-* 📱 **Carrusel filtrado dinámico:** El Home muestra exclusivamente los partidos activos (`"proximo"` o `"reprogramado"`), ofreciendo placeholders amigables si no hay eventos inmediatos.
+* **Métricas reales y barra de ocupación interactiva:** Reemplazo de valores estáticos por cálculo en vivo de asientos vendidos vs. capacidad del estadio (3.552 butacas) con barra de progreso visual en la tabla de gestión.
+* **Filtro de fases en el gráfico de recaudación:** Selector dinámico en Chart.js para auditar ingresos por etapa del torneo (`Todos`, `16avos`, `8vos`, `4tos`, `Semis`, `Final`) evitando gráficos apiñados y facilitando el análisis gerencial.
+* **Navegación inteligente con scroll automático:** Botón *"Ver mis tickets"* en la pantalla de éxito que traslada al usuario directamente a la sección de tickets en su perfil.
+* **Blindaje y disponibilidad automática:** Los partidos de fases finalizadas pasan automáticamente a estado `"no disponible"`, deshabilitando compras accidentales tanto en las tarjetas como en rutas directas del estadio.
+* **Soporte internacional ampliado:** Inclusión de nuevas selecciones como Egipto con renderizado automático de banderas en el administrador y el calendario.
+* **Carrusel filtrado dinámico:** El Home muestra exclusivamente los partidos activos (`"proximo"` o `"reprogramado"`), ofreciendo placeholders amigables si no hay eventos inmediatos.
+* **Modal de Login Exitoso (Verde 🟢):** Brinda confirmación visual inmediata y amigable tras iniciar sesión con éxito antes de redirigir.
+* **Modal de Restricción en Home (Blanco y Rojo 🔴⚪):** Si un usuario no registrado intenta comprar, se despliega un diálogo limpio invitándolo a iniciar sesión o crear cuenta con botones de acceso directo, sin interrumpir abruptamente su navegación.
+* **Auto-Desplazamiento Post-Compra:** Al finalizar el pago, el usuario cuenta con el botón *"Ver mis tickets"*, que lo traslada al perfil ejecutando un desplazamiento suave (*smooth scroll*) directo a la sección de tickets adquiridos.
+* * **Auto-completado para el Admin:** El log in ahora cuenta con un autocompletado para el administrador, facilitando así el acceso al mismo en la página desplegada.
 
 ---
 
