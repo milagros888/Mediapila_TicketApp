@@ -20,6 +20,13 @@ Esta página fue desarrollada en grupo, como uno de los proyectos finales del Bo
 * 🌐 **[Sitio Web / Demo en Vercel](https://mediapila-ticket-app.vercel.app/)**
 * 📁 **[Repositorio en GitHub](https://github.com/milagros888/Mediapila_TicketApp)**
 
+### 🔑 Credenciales de Acceso Demo
+
+| Rol | Usuario | Contraseña | Descripción |
+| :--- | :--- | :--- | :--- |
+| **🛡️ Administrador** | `admin` | `admin123` | Acceso completo al Panel de Control (`/admin`), gestión de partidos, estadísticas en tiempo real y auditoría. |
+| **👤 Usuario Regular** | *Registro libre* | *A elección* | Se puede registrar libremente cualquier usuario nuevo para probar el flujo de selección de butacas, carrito y compra. |
+
 ---
 
 ## 📌 Tabla de Contenidos

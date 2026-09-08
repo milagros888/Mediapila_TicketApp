@@ -44,9 +44,15 @@ function Login() {
     }
   };
 
+  const handleAutocompletarAdmin = () => {
+    setIdentificador("admin");
+    setPassword("admin123");
+    setMensaje({ texto: "Credenciales de Administrador cargadas en el formulario.", tipo: "info" });
+  };
+
   return (
     <main className="auth-bg d-flex flex-column min-vh-100 font-montserrat text-white justify-content-center align-items-center py-5">
-      <div className="w-520">
+      <div className="w520 w-100 px-3">
         <div className="mb-4 text-start">
           <Link to="/">
             <img
@@ -60,6 +66,47 @@ function Login() {
         <h1 className="h2 fw-bold text-uppercase mb-4 text-start lh-sm spacing05">
           COMPRÁ TICKETS AL INSTANTE<br />EN UN SOLO LUGAR
         </h1>
+
+        {/* Cartel informativo de Modo Demostración */}
+        <div className="demo-credentials-card mb-4 p-3 text-start">
+          <div className="d-flex align-items-center justify-content-between mb-2">
+            <div className="d-flex align-items-center gap-2">
+              <span className="demo-badge">DEMO</span>
+              <span className="fw-semibold text-white small">Credenciales de Prueba</span>
+            </div>
+            <button
+              type="button"
+              className="btn btn-sm demo-btn-autofill py-1 px-2 d-flex align-items-center gap-1 rounded-pill"
+              onClick={handleAutocompletarAdmin}
+              title="Cargar credenciales de administrador automáticamente"
+            >
+              <i className="bx bx-bolt-circle text-warning"></i>
+              <span>Autocompletar Admin</span>
+            </button>
+          </div>
+
+          <div className="demo-credentials-body p-2 rounded-2 mb-2">
+            <div className="d-flex flex-wrap align-items-center justify-content-between gap-2 small">
+              <div>
+                <span className="text-white-50 me-1">Rol:</span>
+                <strong className="text-white">Admin</strong>
+              </div>
+              <div>
+                <span className="text-white-50 me-1">Usuario:</span>
+                <code className="bg-transparent p-0">admin</code>
+              </div>
+              <div>
+                <span className="text-white-50 me-1">Contraseña:</span>
+                <code className="bg-transparent p-0">admin123</code>
+              </div>
+            </div>
+          </div>
+
+          <p className="demo-note mb-0 text-white-50">
+            <i className="bx bx-info-circle text-info me-1"></i>
+            Esta plataforma es un proyecto de demostración. Podés ingresar con el rol <strong>Admin</strong> para gestionar partidos y ver auditorías, o <Link to="/registro" className="text-brand fw-bold text-decoration-none">crear tu propia cuenta</Link> para probar la experiencia como <strong>usuario regular</strong>.
+          </p>
+        </div>
 
         <div className="d-flex align-items-center text-white-70 mb-4 fs-6 opacity-75">
           <i className="bx bx-user me-2 fs-5"></i> Ingresá a tu cuenta
