@@ -15,10 +15,9 @@ Esta página fue desarrollada en grupo, como uno de los proyectos finales del Bo
 
 ---
 
-## 🔗 Demostración y Enlaces
+## 🔗 Enlace a la Demostración
 
 * 🌐 **[Sitio Web / Demo en Vercel](https://mediapila-ticket-app.vercel.app/)**
-* 📁 **[Repositorio en GitHub](https://github.com/milagros888/Mediapila_TicketApp)**
 
 ### 🔑 Credenciales de Acceso Demo
 
